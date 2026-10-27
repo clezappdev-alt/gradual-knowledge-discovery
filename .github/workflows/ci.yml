@@ -1,0 +1,36 @@
+name: ci
+
+# A fork runs this with a read-only token and no secrets, which is why the
+# workflow needs neither. It runs the command CONTRIBUTING.md documents,
+# verbatim: if it is green locally it is green here.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+      - run: node --version
+      - run: pnpm --version
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm verify

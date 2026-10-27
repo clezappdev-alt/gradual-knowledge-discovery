@@ -1,0 +1,21 @@
+{
+  "name": "gradual-knowledge-discovery",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Gradual knowledge discovery for AI agents: budgeted, evidence-bound answers about a repository.",
+  "license": "MIT",
+  "author": "clezapp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clezappdev-alt/gradual-knowledge-discovery.git"
+  },
+  "bugs": "https://github.com/clezappdev-alt/gradual-knowledge-discovery/issues",
+  "homepage": "https://github.com/clezappdev-alt/gradual-knowledge-discovery#readme",
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@12.11.2",
+  "scripts": {
+    "verify": "node scripts/check-docs.mjs"
+  }
+}

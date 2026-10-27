@@ -1,0 +1,32 @@
+name: Feature or scope proposal
+description: A problem worth solving, or a product decision to discuss
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: Describe the pain, not the solution. Who feels it, and when?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Expected outcome
+      description: What becomes possible or stops hurting when this is solved?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Files, commands, repositories, or references that show the problem is real.
+    validations:
+      required: false
+  - type: textarea
+    id: non-goals
+    attributes:
+      label: What this is not
+      description: Scope you would explicitly leave out.
+    validations:
+      required: false

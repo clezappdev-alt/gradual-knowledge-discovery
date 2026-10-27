@@ -1,9 +1,13 @@
 # ADR 0001 — Stack: TypeScript, pnpm workspace, scoped npm packages
 
+> **Status: proposed, not approved.** The day-one repository standard needs a verification loop, and a
+> verification loop needs a toolchain; this ADR is the recommendation that unblocks it. No product code
+> depends on it, so approving or reversing it later costs one commit.
+
 - **Status:** proposed (v0)
 - **Date:** 2026-10-27
 - **Deciders:** Carlos Leceta
-- **Related:** charter §4 (integration contract), §7 (non-goals)
+- **Related:** `docs/proposals/thesis-draft.md` §4 (integration contract), §7 (non-goals)
 
 ## Context
 

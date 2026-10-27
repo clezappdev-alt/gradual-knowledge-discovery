@@ -38,8 +38,11 @@ codegraph (symbols) — not a replacement for any of them, and not a workflow of
 
 | Document | What it decides |
 |---|---|
-| [`docs/charter.md`](docs/charter.md) | the problem, the gradual mechanism, the contract, non-goals |
-| [`docs/adr/0001-stack.md`](docs/adr/0001-stack.md) | TypeScript + pnpm + scoped npm packages |
-| [`docs/slice-1-brief.md`](docs/slice-1-brief.md) | first slice: `gkd brief`, specs and acceptance tests |
+| [`AGENTS.md`](AGENTS.md) | how agents work in this repo: authority map, hard rules, gates |
+| [`docs/proposals/thesis-draft.md`](docs/proposals/thesis-draft.md) | hypothesis: the problem, the gradual mechanism, the contract, non-goals |
+| [`docs/decisions/0001-stack.md`](docs/decisions/0001-stack.md) | proposed stack: TypeScript + pnpm + scoped npm packages |
+| [`docs/proposals/slice-1-brief.md`](docs/proposals/slice-1-brief.md) | proposed first slice: `gkd brief`, specs and acceptance tests |
+| [`.agents/skills/team-docs/SKILL.md`](.agents/skills/team-docs/SKILL.md) | how evidence becomes team-readable docs, without a second source of truth |
 
-**Status: definition (v0).** No source code yet; the charter's open questions are for the owner.
+**Status: definition (v0).** No product source code yet. The thesis, the stack and the first slice are
+proposals awaiting the owner; requirements land in `openspec/` only after they are approved.

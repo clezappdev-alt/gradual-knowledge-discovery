@@ -1,6 +1,10 @@
 # GKD Charter — Gradual Knowledge Discovery
 
-**Status:** proposed (v0, awaiting owner sign-off)
+> **This is a draft, not a requirement.** It is a hypothesis for the product scoping dialogue.
+> No command, flag, output or layout described here is authorized until an `openspec/` requirement
+> accepts it. `docs/` explains; `openspec/` decides.
+
+**Status:** hypothesis (v0, awaiting product scoping and owner sign-off)
 **Date:** 2026-10-27
 **Owner:** Carlos Leceta
 **Supersedes:** nothing. This document is written from scratch for this repository; no charter from earlier attempts is inherited.
@@ -184,7 +188,7 @@ compatibility promise — Kaddo's `.kaddo/` layout and user base are out of scop
 - **Q1.** Is the "gradual" mechanism as defined in §3 — budgeted disclosure plus accreted, freshness-
   stamped knowledge — what the product must be? (Everything downstream follows from this.)
 - **Q2.** Which slice proves it first: the L0 brief (orientation), the L1/L2 discover (task-scoped
-  answer), or the check (freshness)? This charter recommends the brief: it is the smallest artifact
-  that pins the envelope, the budget discipline and the determinism claim in one command.
+  answer), or the check (freshness)? This draft recommends the brief: it is the smallest artifact that
+  pins the envelope, the budget discipline and the determinism claim in one command.
 - **Q3.** Does `@gkd/pi` ship with the first publishable version, or after the CLI contract is stable?
 - **Q4.** Is `.gkd/` gitignored by default (derived cache) or committable (shareable, reviewable map)?

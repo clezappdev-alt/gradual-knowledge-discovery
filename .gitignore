@@ -19,6 +19,19 @@ pnpm-debug.log*
 .env.*
 !.env.example
 
+# Local agent/runtime state (never committed, never reviewed)
+.atl/
+.codegraph/
+.pi/
+odd/
+scratch/
+*.local.md
+
+# Consultation clones (registry files stay versioned)
+references/*
+!references/README.md
+!references/manifest.yml
+
 # Tests and coverage
 coverage/
 .nyc_output/

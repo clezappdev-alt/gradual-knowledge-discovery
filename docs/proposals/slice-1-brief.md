@@ -1,7 +1,10 @@
 # Slice 1 — `gkd brief` (L0 orientation)
 
-- **Status:** proposed (v0, awaiting owner sign-off)
-- **Depends on:** `docs/charter.md` §3–§4, `docs/adr/0001-stack.md`
+> **This is a proposal, not a requirement.** It becomes buildable only when the owner approves the
+> thesis and an `openspec/` change accepts the command, the envelope and the exit codes.
+
+- **Status:** proposal (v0, awaiting thesis approval)
+- **Depends on:** `docs/proposals/thesis-draft.md` §3–§4, `docs/decisions/0001-stack.md`
 - **First commit target:** `feat(brief): deterministic L0 repo brief within a declared token budget`
 
 ## Why this slice
@@ -77,7 +80,7 @@ Markdown, preserving S2 (determinism), S3 (budget) and S5 (evidence pointers).
 2. **Budget (S3):** for declared `300`, `600`, `2000` → `estimated <= declared`; the trimmed list is
    exactly the sections the trimming loop dropped; identity/unknowns/next never trimmed.
 3. **L0 on this repo (S4/S5):** detects the pnpm workspace (`pnpm-workspace.yaml`, `packages/`), the
-   documentation inventory including `docs/adr/`, the `head` sha matching `git rev-parse HEAD`, and every
+   documentation inventory including `docs/decisions/`, the `head` sha matching `git rev-parse HEAD`, and every
    claim has evidence with no absolute path.
 4. **Legacy fixture (S4):** a committed fixture tree under `test/fixtures/legacy-app/` with no tests and
    one entry point → the brief states that, and its `unknowns[]` says no test surface was found.

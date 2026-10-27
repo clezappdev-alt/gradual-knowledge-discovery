@@ -185,6 +185,53 @@ function checkWorkflows(files) {
   }
 }
 
+const SKILL_SECTIONS = [
+  "## Activation Contract",
+  "## Hard Rules",
+  "## Decision Gates",
+  "## Execution Steps",
+  "## Output Contract",
+];
+const SKILL_BODY_MAX_TOKENS = 1000;
+
+// A skill is a runtime instruction contract, not an essay: trigger-first quoted
+// description, fixed section order, and a body that stays inside the context budget.
+function checkSkills(files) {
+  for (const relPath of files.filter((f) => /^\.agents\/skills\/[^/]+\/SKILL\.md$/.test(f))) {
+    const text = readText(relPath);
+    if (text === null) continue;
+
+    const frontmatter = /^---\n([\s\S]*?)\n---\n/.exec(text);
+    if (!frontmatter) {
+      failures.push(`${relPath}: missing frontmatter`);
+      continue;
+    }
+    const description = /^description:\s*(.+)$/m.exec(frontmatter[1]);
+    if (!description) failures.push(`${relPath}: missing description`);
+    else {
+      const raw = description[1].trim();
+      if (!/^".*"$/.test(raw)) failures.push(`${relPath}: description must be quoted on one line`);
+      if (raw.length > 250) failures.push(`${relPath}: description exceeds 250 characters`);
+      if (!/^"Trigger:/.test(raw)) failures.push(`${relPath}: description must start with "Trigger:"`);
+    }
+
+    const body = text.slice(frontmatter[0].length);
+    const positions = SKILL_SECTIONS.map((section) => body.indexOf(`\n${section}\n`));
+    SKILL_SECTIONS.forEach((section, index) => {
+      if (positions[index] === -1) failures.push(`${relPath}: missing section ${section}`);
+    });
+    const present = positions.filter((p) => p !== -1);
+    if (present.length === positions.length && present.some((p, i) => i > 0 && p < present[i - 1])) {
+      failures.push(`${relPath}: sections out of the required order`);
+    }
+
+    const tokens = Math.ceil(body.length / 4);
+    if (tokens > SKILL_BODY_MAX_TOKENS) {
+      failures.push(`${relPath}: body is ~${tokens} tokens, over the ${SKILL_BODY_MAX_TOKENS} hard maximum`);
+    }
+  }
+}
+
 function main() {
   const files = trackedFiles();
   checkRequired(files);
@@ -193,6 +240,7 @@ function main() {
   checkLeaks(files);
   checkRuntimeFloor(files);
   checkWorkflows(files);
+  checkSkills(files);
 
   if (failures.length > 0) {
     failures.sort();

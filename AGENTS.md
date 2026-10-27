@@ -89,6 +89,12 @@ Empty directories are documented here before they exist; nothing is scaffolded t
 
 ## Skills
 
+Every skill in this repo follows the LLM-first shape, because gentle-ai's registry and its
+`skill-improver` audit against it: a trigger-first quoted `description`, then **Activation Contract →
+Hard Rules → Decision Gates → Execution Steps → Output Contract**. Body target 180–450 tokens, hard
+maximum 1000; depth lives in the skill's own `references/`, never in the body and never as a URL used as
+the primary source. A skill is a runtime instruction contract, not an essay.
+
 - **`team-docs` (local, `.agents/skills/team-docs/`)** — projection of ODD/openspec evidence into
   human-readable `docs/`. Opt-in, read-only over the harness, never blocking. An experiment: if it
   earns its keep here, it is promoted to a global skill; if not, it dies here.

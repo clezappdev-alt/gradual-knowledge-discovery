@@ -79,6 +79,12 @@ function checkPackageJson(files) {
   if (pkg.license !== "MIT") failures.push(`package.json: license must be MIT, found ${pkg.license}`);
   if (pkg.author !== "clezapp") failures.push(`package.json: author must be clezapp, found ${pkg.author}`);
   if (pkg.private !== true) failures.push("package.json: must stay private until the publish gate");
+  const runtimeDeps = Object.keys(pkg.dependencies || {});
+  if (runtimeDeps.length > 0) {
+    failures.push(
+      `package.json: runtime dependency without a recorded exception (${runtimeDeps.sort().join(", ")})`,
+    );
+  }
   if (!pkg.scripts || typeof pkg.scripts.verify !== "string") failures.push('package.json: missing "verify" script');
 }
 

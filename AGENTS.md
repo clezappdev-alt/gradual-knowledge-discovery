@@ -92,6 +92,13 @@ Empty directories are documented here before they exist; nothing is scaffolded t
 - **Planned, after evidence:** a global `deterministic-cli` skill (JSON envelope, budget, determinism),
   written from the first shipped slice, never before it.
 
+## Verification
+
+`pnpm verify` is the only verification command, and CI runs that exact command — no second recipe.
+Today it checks required files, relative links, machine-specific path leaks and the author rule; when
+source exists it gains typecheck and tests under the same name. A check is trusted only after it has
+been seen to fail on the thing it claims to catch.
+
 ## Commits (clean reviews)
 
 - Conventional Commits, English, imperative subject; one work unit per commit; tests and docs for the

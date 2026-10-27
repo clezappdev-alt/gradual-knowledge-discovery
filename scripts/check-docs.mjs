@@ -98,8 +98,7 @@ function checkLinks(files) {
   }
 }
 
-function checkLeaks(files) {
-  for (const relPath of files) {
+function checkLeaks(files) {  for (const relPath of files) {
     if (!TEXT_EXTENSIONS.some((ext) => relPath.endsWith(ext))) continue;
     const text = readText(relPath);
     if (text === null) continue;
@@ -117,12 +116,77 @@ function checkLeaks(files) {
   }
 }
 
+function parseVersion(text) {
+  const match = /(\d+)\.(\d+)\.(\d+)/.exec(text);
+  return match ? [Number(match[1]), Number(match[2]), Number(match[3])] : null;
+}
+
+function compareVersions(a, b) {
+  for (let i = 0; i < 3; i += 1) {
+    if (a[i] !== b[i]) return a[i] - b[i];
+  }
+  return 0;
+}
+
+// The runtime floor is a security claim, so it has to be one number in two places and
+// a runtime that actually satisfies it. A major-version claim would pass a check like
+// this while the running binary still carried a patched-out CVE.
+function checkRuntimeFloor(files) {
+  if (!files.includes("package.json") || !files.includes("SECURITY.md")) return;
+  const pkg = JSON.parse(readFileSync(resolve(ROOT, "package.json"), "utf8"));
+  const declared = parseVersion(String((pkg.engines || {}).node || ""));
+  if (!declared) {
+    failures.push('package.json: engines.node must be a minimum version like ">=22.23.4"');
+    return;
+  }
+
+  const security = readFileSync(resolve(ROOT, "SECURITY.md"), "utf8");
+  const marker = /<!--\s*runtime-floor:\s*(\d+\.\d+\.\d+)\s*-->/.exec(security);
+  if (!marker) {
+    failures.push("SECURITY.md: missing <!-- runtime-floor: x.y.z --> marker");
+  } else if (compareVersions(parseVersion(marker[1]), declared) !== 0) {
+    failures.push(
+      `SECURITY.md runtime-floor ${marker[1]} disagrees with package.json engines.node ${declared.join(".")}`,
+    );
+  }
+
+  const running = parseVersion(process.versions.node);
+  if (running && compareVersions(running, declared) < 0) {
+    failures.push(
+      `running Node ${process.versions.node} is below the declared security floor ${declared.join(".")}`,
+    );
+  }
+}
+
+const PINNED_USES = /^\s*-?\s*uses:\s*[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+@[0-9a-f]{40}\s*(#.*)?$/;
+
+function checkWorkflows(files) {
+  for (const relPath of files.filter((f) => f.startsWith(".github/workflows/") && f.endsWith(".yml"))) {
+    const text = readText(relPath);
+    if (text === null) continue;
+    text.split("\n").forEach((line, index) => {
+      const where = `${relPath}:${index + 1}`;
+      if (/^\s*-?\s*uses:/.test(line) && !PINNED_USES.test(line)) {
+        failures.push(`workflow action not pinned to a full commit sha in ${where}`);
+      }
+      if (/pull_request_target/.test(line)) {
+        failures.push(`pull_request_target is forbidden in ${where}`);
+      }
+      if (/permissions:/.test(line) && /write/.test(line)) {
+        failures.push(`workflow requests a write permission in ${where}`);
+      }
+    });
+  }
+}
+
 function main() {
   const files = trackedFiles();
   checkRequired(files);
   checkPackageJson(files);
   checkLinks(files);
   checkLeaks(files);
+  checkRuntimeFloor(files);
+  checkWorkflows(files);
 
   if (failures.length > 0) {
     failures.sort();

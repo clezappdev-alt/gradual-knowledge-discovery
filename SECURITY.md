@@ -89,6 +89,9 @@ this file is not a claim.
 
 ## CI and supply chain
 
+- **Zero runtime dependencies by default.** Node built-ins come first; a new runtime dependency needs a
+  recorded reason and an explicit exception in the repository check, which fails on any entry under
+  `dependencies`. A runtime floor cannot cover a package you chose to install — that surface is yours.
 - Every action is pinned to a full commit SHA with its version in a comment; a mutable tag is a remote
   code execution path into CI.
 - `permissions: contents: read`, always. A workflow gains a permission only when a documented step needs

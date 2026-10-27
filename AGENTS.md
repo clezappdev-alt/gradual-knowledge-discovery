@@ -56,6 +56,9 @@ Empty directories are documented here before they exist; nothing is scaffolded t
    `.pi/`, `*.local.md`, `references/<clone>/`.
 5. **Derived knowledge is not authored truth.** `docs/` explains; `openspec/` decides. When they
    disagree, the requirement wins and the doc is corrected — never the other way round.
+6. **Zero runtime dependencies by default.** Node built-ins come first. A new runtime dependency needs a
+   recorded reason in its commit and an explicit exception in the repository check, because the check
+   fails on any entry under `dependencies`. The lockfile is always committed.
 
 ## Authority map
 

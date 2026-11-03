@@ -1,9 +1,12 @@
 # PRD — Gradual Knowledge Discovery (GKD)
 
-**Status:** draft for owner review. **This document states the problem, not the solution.** No command,
-flag, format or layout described here is authorized; requirements land in the ODD feature document,
-`odd/tasks/<feature>.md`, only after the owner approves this problem statement.
-**Date:** 2026-10-27
+**Status:** draft for owner review.
+
+**This document states the problem, not the solution.** No command, flag, format or layout described here
+is authorized; requirements land in the ODD feature document, `odd/tasks/<feature>.md`, only after the
+owner approves this problem statement.
+
+**Date:** 2026-11-02
 **Owner:** Carlos Leceta
 
 ---
@@ -57,9 +60,10 @@ about a repository that nobody can check cheaply.**
 
 ## 2. Who feels it
 
-**Primary:** a gentle-ai / gentle-shell user working in a pre-AI or legacy repository, in the position of
-**reviewer of what an agent claims**. They already have the harness (ODD, review, subagents); what they
-lack is a trustworthy, cheap answer to the five questions above, inside that flow.
+**Primary:** a gentle-ai / gentle-shell user working in a pre-AI or legacy repository. They already have
+the harness (ODD, review, subagents); what they lack is a trustworthy, cheap answer to the five questions
+above, inside that flow. Their actual job in that position is **reviewing what an agent claims** — and
+that is the work this product exists to shorten.
 
 **Institutional:** a team that must satisfy the living-documentation requirement of §1.1 — onboarding,
 handover, audit, long-term maintenance. They do not want a documentation project; they want the
@@ -118,7 +122,7 @@ Out of scope, deliberately, for the first published version:
   or knowledge capsules. ODD and RDD already own that inside gentle-ai, and rebuilding it
   inside a module would duplicate the harness — the one thing this project's rules forbid.
 - **No delivery gates.** The tool informs; gentle-ai decides.
-- **No per-agent adapters** (`AGENTS.md`, `CLAUDE.md`, editor plugins). Other agents are reached by
+- **No per-agent adapters** (`AGENTS.md`, `CLAUDE.md`, editor plugins): other agents are reached by
   protocol.
 - **No human-facing knowledge authoring**: it does not commission documentation and does not ask a team to
   write knowledge before it can help.

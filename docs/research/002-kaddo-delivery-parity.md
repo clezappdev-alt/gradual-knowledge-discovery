@@ -17,12 +17,13 @@
 > mentions it; its authority artifact is the feature document `odd/tasks/<feature>.md`
 > (`gentle-pi/assets/orchestrator-memory.md:7`; the delegation handoff sends workers to that same
 > document's `## Specs`, `gentle-pi/assets/orchestrator-delegation.md:7`). `openspec/` is a
-> project-adopted SDD convention (`AGENTS.md:4,24`) with no installed CLI on this machine;
-> wherever it appears below it is labeled as such, and a row whose only substitute is openspec is
-> treated as a `gap` for ODD users.
+> project-adopted SDD convention with no installed CLI on this machine — and the owner removed it
+> from this repository's own rules on 2026-11-02 (see the correction note in
+> `001-kaddo-audit.md`). Wherever it appears below it is labeled as such, and a row whose only
+> substitute is openspec is treated as a `gap` for ODD users.
 >
 > Verdict strictness: `duplicate` = gentle-ai/GKD already owns the outcome; a Kaddo port would be
-> forbidden by `AGENTS.md:46-49` (hard rule 1) and `PRD.md:117-119`. `partial` = the outcome is
+> forbidden by `AGENTS.md` hard rule 1 and `PRD.md` §6. `partial` = the outcome is
 > covered by a different-shaped harness mechanism with a real loss. `gap` = nothing covers it (even
 > when the exclusion is deliberate per `PRD.md:112-124`).
 
@@ -161,9 +162,10 @@ lost: any structure at all — typed resources, environment scoping, reference-p
 Plain statements, no defense of the harness read here:
 
 1. **No standing tracker.** There is no place to look up what work items exist, their states and owners
-   without a live agent session: the artifacts are per-feature (`gentle-pi/assets/orchestrator-memory.md:7`),
-   and `odd/` never enters a commit or review (`AGENTS.md:56`). Kaddo's `work-items/` tree with status
-   directories (`core/lifecycle.ts:9-32`) is exactly the missing object.
+   without a live agent session: the artifact is one feature document per feature
+   (`gentle-pi/assets/orchestrator-memory.md:7`), and although it is tracked in this repository since
+   2026-11-02, it is a journal ordered by feature, not a queryable tracker. Kaddo's `work-items/` tree
+   with status directories (`core/lifecycle.ts:9-32`) is exactly the missing object.
 2. **No shared visual or status surface.** No web UI (#7), no plan/epic progress reports (#3), no drift
    trend reports (`001-kaddo-audit.md:120-121` row 8). Everyone who wants the state of delivery must
    read a transcript artifact or ask the agent.
@@ -187,7 +189,7 @@ Plain statements, no defense of the harness read here:
 | learn: captured learning (row 5) | Engram saves + ODD `## Log` (`gentle-pi/assets/orchestrator.md:67-69`) | Learning does not live in the tracked repo, next to the artifact it explains |
 | Integrations import (row 6) | Approved-issue gate + manual triage (`gentle-pi/skills/rdd-defect-workflow/SKILL.md:19`) | All fetching, preview, dedup, conflict resolution, provenance are human work |
 | Admin UI (row 7) | Terminal artifacts only | Nobody outside an agent session gets a usable state view |
-| Capsules (row 8) | None (out of scope, `PRD.md:117-118`) | No standard cross-repo knowledge exchange; hand-written docs must carry the load |
+| Capsules (row 8) | None (out of scope, `PRD.md` §6) | No standard cross-repo knowledge exchange; hand-written docs must carry the load |
 | Owners/`(code:)` ownership (row 9) | None; future `gkd check` derived staleness (`001-kaddo-audit.md:124-125`) | No "tell the author when this file changes" routing; staleness is a design bet, not a mechanism |
 | Deprecation planning (row 10) | Prose ADR under `docs/decisions/` (`AGENTS.md:66-82`) | No waves, eligibility windows, auto-proposed removal items, or validated runbooks |
 | Topology proposals (row 11) | None — GKD derives structure instead | Ingesting an agent-authored structural model has no validated/atomic path |
@@ -196,14 +198,15 @@ Plain statements, no defense of the harness read here:
 
 ## 5. Contradictions note (evidence vs. the written claims)
 
-- `PRD.md:117-119` states ODD, `openspec/` and RDD "already own" the delivery half. For the work-item
+- `PRD.md` §6 states ODD and RDD "already own" the delivery half. (It named `openspec/` too when this
+  map was written; the owner removed that claim on 2026-11-02, so read it as ODD + RDD only.) For the work-item
   lifecycle *decision* and the completion *gate*, the code evidence confirms it (rows 1, 4, 13 are
   `duplicate`). But for rows 2, 3, 4(evidence), 5, 6 the coverage is a differently-shaped,
   session-shaped mechanism with genuine tracked-repo losses, and the PRD's mechanism list itself is
   partly wrong: the injected ODD contract never references `openspec/` — the harness authority
   artifacts are the `odd/tasks/<feature>.md` feature document and the reviewed work-unit boundary
   (`gentle-pi/assets/orchestrator-memory.md:7`, `gentle-pi/assets/orchestrator-delegation.md:7`) —
-  while `openspec/` is only a project-adopted SDD convention (`AGENTS.md:4,24`), not installed and
+  while `openspec/` is only a project-adopted SDD convention, not installed and
   not part of the flow an ODD user gets without choosing it. The PRD sentence is true as a
   jurisdiction claim for ODD/RDD and weaker as a capability claim. Nothing here contradicts
   `AGENTS.md` hard rule 1: every substitute above is a harness artifact, phase or command (or a

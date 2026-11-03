@@ -54,7 +54,8 @@ Empty directories are documented here before they exist; nothing is scaffolded t
    command, flag or output exists only after the owner approves it in the feature document's `## Specs`.
 4. **Local-only state never enters a commit or a review:** `scratch/`, `.atl/`, `.codegraph/`, `.pi/`,
    `*.local.md`, `references/<clone>/`. The tracked feature document under `odd/tasks/` is the one
-   exception, and it stays clean: specs, tasks, decisions and evidence pointers — never raw transcripts,
+   exception — enforced by `.gitignore` (`odd/*` with `!odd/tasks/`), not by memory — and it stays clean:
+   specs, tasks, decisions and evidence pointers — never raw transcripts,
    pasted terminal output, secrets or machine paths.
 5. **Derived knowledge is not authored truth.** `docs/` explains; the feature document decides. When
    they disagree, the requirement wins and the doc is corrected — never the other way round.

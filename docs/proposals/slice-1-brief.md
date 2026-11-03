@@ -1,7 +1,7 @@
 # Slice 1 — `gkd brief` (L0 orientation)
 
 > **This is a proposal, not a requirement.** It becomes buildable only when the owner approves the
-> thesis and an `openspec/` change accepts the command, the envelope and the exit codes.
+> thesis and accepts the command, the envelope and the exit codes in the ODD feature document.
 
 - **Status:** proposal (v0, awaiting thesis approval)
 - **Depends on:** `docs/proposals/thesis-draft.md` §3–§4, `docs/decisions/0001-stack.md`

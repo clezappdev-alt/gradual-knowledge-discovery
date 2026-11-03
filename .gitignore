@@ -23,9 +23,12 @@ pnpm-debug.log*
 .atl/
 .codegraph/
 .pi/
-odd/
 scratch/
 *.local.md
+
+# ODD workspace: only the feature documents are versioned, the rest is session state
+odd/*
+!odd/tasks/
 
 # Consultation clones (registry files stay versioned)
 references/*

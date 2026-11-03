@@ -56,8 +56,9 @@ gets the same verification you get locally. Never put a credential in a workflow
 
 ## What gets merged
 
-- Behavior without an approved requirement is not merged. In this repo the requirement lives in
-  `openspec/` once SDD starts; before that, product changes are proposals under `docs/proposals/`.
+- Behavior without an approved requirement is not merged. In this repo the requirement lives in the ODD
+  feature document, `odd/tasks/<feature>.md` (tracked here), once the owner approves it; before that,
+  product changes are proposals under `docs/proposals/`.
 - Documentation that contradicts a requirement is a bug in the documentation.
 - A rule that only works with one person's machine, one person's global tools, or one person's shell
   history is not a rule.

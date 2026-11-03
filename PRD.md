@@ -133,21 +133,20 @@ Out of scope, deliberately, for the first published version:
 upstream Kaddo exists — what it really offers, command by command, and how each capability maps onto
 gentle-ai's mechanics. The audit lives at `docs/research/001-kaddo-audit.md`.
 
-**D1 — Scope decomposition.** "Cover at least the same cases as Kaddo" splits in two halves: the
-*discovery* half (`scan`, `context`, `understand`, `explain`, drift check) and the *delivery lifecycle
-half* (work items, roadmap, verify, admin, integrations). The second half is what ODD + RDD already do
-inside gentle-ai. **Proposal: GKD owns the discovery half only.** Confirm or reject — after the
-audit.
+**D1 — Scope decomposition (proposed, awaiting approval).** "Cover at least the same cases as Kaddo"
+splits in two halves: the *discovery* half and the *delivery lifecycle* half. The audit measured the
+second as the majority, and the parity map found two clean duplicates, six partial substitutions and five
+gaps. The decision is written as [`docs/decisions/0002-scope.md`](docs/decisions/0002-scope.md): **GKD
+owns the truth about the repository; the harness owns the delivery.**
 
-**D2 — Which of the five questions leads the first slice.** Orientation (Q1) is the gate to the rest;
-impact (Q3) is where trust matters most; staleness (Q5) is the one a human cannot get anywhere else today.
-Deferred until the audit lands: Kaddo may already answer one of them well enough to change the order.
+**D2 — First slice (decided 2026-11-02).** **Truth and freshness first**: what the repository claims
+about itself must stay true — freshness stamps, evidence, staleness named. Orientation (Q1) and impact
+(Q3) follow. Rationale: it is the requirement the owner named unprompted (living documentation), and the
+audit found it is the weakest mechanism in Kaddo.
 
-**D3 — Validation repositories.** Not one repository: the owner's instruction is that the three repo
-kinds (new, pre-AI, legacy) have different shapes and must be validated separately. The ADABAS legacy
-converter is the natural legacy candidate, but reading it requires explicit owner permission: it lives
-outside this project root.
+**D3 — Validation repositories (decided 2026-11-02).** **Synthetic fixtures, one per repository kind**
+(new, pre-AI, legacy), so the same contract is measured under all three shapes. The ADABAS legacy
+converter was *not* authorized for reading and stays out of scope until the owner says otherwise.
 
-**D4 — Study clone.** A read-only clone of upstream Kaddo (v3.132.0) under `references/`, with a TTL and
-a manifest entry, to study its behaviour with citations. Authorized in principle by the owner; not yet
-created.
+**D4 — Study clone (closed).** Upstream Kaddo v3.132.0 sits read-only at `references/kaddo`, with a
+manifest entry and a TTL of 2027-01-27; clone contents are never versioned.

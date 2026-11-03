@@ -4,8 +4,8 @@ Working contract for this repository. `README.md` is the external face; this fil
 here. Product requirements live in `openspec/` once SDD starts; what a human team reads lives in
 `docs/` as a projection (see the `team-docs` skill).
 
-**Status:** definition stage. No product source code exists. The product thesis, the stack ADR and the
-first-slice proposal are drafts awaiting owner approval.
+**Status:** definition stage. No product source code exists. The problem statement (`PRD.md`) is a draft
+awaiting owner review; the stack and the first slice remain proposals.
 
 ## Structure
 
@@ -76,7 +76,7 @@ Empty directories are documented here before they exist; nothing is scaffolded t
 
 | Situation | Action |
 |---|---|
-| Product scope, target user, or "is this what the product is?" | Owner decides — in dialogue, then `PRD.md` and a thesis draft |
+| Product scope, target user, or "is this what the product is?" | Owner decides — in dialogue, then `PRD.md` (problem only) and a thesis draft |
 | Wants to build a command, flag or output | Needs an approved requirement first; until then, a proposal under `docs/proposals/` |
 | Kaddo behavior in doubt | Cite it: a finding with `path:line` or URL. Never guess from memory, never fork |
 | Question about the harness (gentle-ai, ODD, RDD, Pi) | Read the installed docs/skills; never invent harness behavior |
@@ -130,7 +130,6 @@ been seen to fail on the thing it claims to catch.
 
 | Artifact | Missing because |
 |---|---|
-| `PRD.md` | product scoping is the next dialogue, not a guess |
-| `openspec/` change | no approved requirement yet |
+| `openspec/` change | `PRD.md` is a problem statement, not an approved requirement |
 | `packages/` source | no approved requirement yet |
 | `team-docs` output beyond proposals | nothing shipped to explain |

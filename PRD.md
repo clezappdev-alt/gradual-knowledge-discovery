@@ -1,8 +1,8 @@
 # PRD — Gradual Knowledge Discovery (GKD)
 
 **Status:** draft for owner review. **This document states the problem, not the solution.** No command,
-flag, format or layout described here is authorized; requirements land in `openspec/` only after the owner
-approves this problem statement.
+flag, format or layout described here is authorized; requirements land in the ODD feature document,
+`odd/tasks/<feature>.md`, only after the owner approves this problem statement.
 **Date:** 2026-10-27
 **Owner:** Carlos Leceta
 
@@ -115,7 +115,7 @@ Out of scope, deliberately, for the first published version:
   reference, never a base.
 - **No LLM, no API key, no network, no telemetry.** A credential-free, deterministic tool.
 - **No delivery lifecycle**: no work items, roadmap, admin UI, external integrations (Jira/GitHub/Azure),
-  or knowledge capsules. ODD, `openspec/` and RDD already own that inside gentle-ai, and rebuilding it
+  or knowledge capsules. ODD and RDD already own that inside gentle-ai, and rebuilding it
   inside a module would duplicate the harness — the one thing this project's rules forbid.
 - **No delivery gates.** The tool informs; gentle-ai decides.
 - **No per-agent adapters** (`AGENTS.md`, `CLAUDE.md`, editor plugins). Other agents are reached by
@@ -131,8 +131,8 @@ gentle-ai's mechanics. The audit lives at `docs/research/001-kaddo-audit.md`.
 
 **D1 — Scope decomposition.** "Cover at least the same cases as Kaddo" splits in two halves: the
 *discovery* half (`scan`, `context`, `understand`, `explain`, drift check) and the *delivery lifecycle
-half* (work items, roadmap, verify, admin, integrations). The second half is what ODD + `openspec/` + RDD
-already do inside gentle-ai. **Proposal: GKD owns the discovery half only.** Confirm or reject — after the
+half* (work items, roadmap, verify, admin, integrations). The second half is what ODD + RDD already do
+inside gentle-ai. **Proposal: GKD owns the discovery half only.** Confirm or reject — after the
 audit.
 
 **D2 — Which of the five questions leads the first slice.** Orientation (Q1) is the gate to the rest;

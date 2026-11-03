@@ -23,7 +23,6 @@ pnpm-debug.log*
 .atl/
 .codegraph/
 .pi/
-odd/
 scratch/
 *.local.md
 

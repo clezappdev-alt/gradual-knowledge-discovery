@@ -45,4 +45,4 @@ codegraph (symbols) — not a replacement for any of them, and not a workflow of
 | [`.agents/skills/team-docs/SKILL.md`](.agents/skills/team-docs/SKILL.md) | how evidence becomes team-readable docs, without a second source of truth |
 
 **Status: definition (v0).** No product source code yet. The thesis, the stack and the first slice are
-proposals awaiting the owner; requirements land in `openspec/` only after they are approved.
+proposals awaiting the owner; requirements land in the ODD feature document only after they are approved.

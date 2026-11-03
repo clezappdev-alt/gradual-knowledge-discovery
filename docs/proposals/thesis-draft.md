@@ -1,8 +1,8 @@
 # GKD Charter — Gradual Knowledge Discovery
 
 > **This is a draft, not a requirement.** It is a hypothesis for the product scoping dialogue.
-> No command, flag, output or layout described here is authorized until an `openspec/` requirement
-> accepts it. `docs/` explains; `openspec/` decides.
+> No command, flag, output or layout described here is authorized until the owner approves it in the
+> ODD feature document. `docs/` explains; the feature document decides.
 
 **Status:** hypothesis (v0, awaiting product scoping and owner sign-off)
 **Date:** 2026-10-27

@@ -16,13 +16,13 @@ nothing to explain yet.
 
 ## Hard Rules
 
-1. **Read-only over the harness.** Never edit `odd/tasks/`, `openspec/` or any gentle-ai file. Write only
-   under `docs/`.
+1. **Read-only over the harness.** Never edit `odd/tasks/` or any gentle-ai file. Write only under
+   `docs/`.
 2. **Never blocking.** An unfinished projection is reported as a gap, never as a gate on a commit,
    review, merge or release.
 3. **Explain, never specify.** A page links its sources; when a page and a requirement disagree, the
    requirement wins and the page is corrected.
-4. **No copied task lists.** Link `odd/tasks/` and `openspec/`; never mirror them.
+4. **No copied task lists.** Link `odd/tasks/`; never mirror it.
 5. **Evidence or nothing.** Every behavioral sentence traces to a requirement id, a `path:line`, a test
    name or a commit. Untraceable sentences are deleted, not softened.
 6. **Tracked sources only.** The journal may inform the narrative, but every assertion must be

@@ -350,3 +350,21 @@ owning only the first. The audit's answer:
   `packages/integrations/src/` adapters reach the network only under explicit read commands (`git`
   status shows jira/mock adapters present but their bodies were not read); (c) UI source of the Admin
   panel beyond the command entry (`packages/admin/`, not read).
+
+---
+
+### Correction (2026-11-02): `openspec/` is not a harness mechanism
+
+This audit's mapping matrix (§6) and preamble refer to "`openspec/` changes" as if they were part of the
+gentle-ai / ODD contract. They are not. Verified afterwards: the ODD contract the harness injects has
+**zero** mentions of openspec (all of `assets/orchestrator*.md`), and its requirement artifact is
+`odd/tasks/<feature>.md` read by reference (`assets/orchestrator-memory.md:7`,
+`orchestrator-delegation.md:7`). The `openspec` CLI is not installed on this machine; `openspec/`
+appears only as a project-adopted SDD convention in gentle-ai's own repository and in the owner's
+earlier projects.
+
+Effect on this document: rows 1 and 5 of §6 overstated gentle-ai's coverage. Read them with `openspec/`
+removed — row 1 then rests on the `AGENTS.md` working contract and on ODD tasks only, and row 5 on ODD's
+own task journal. The document is otherwise unaffected; the Kaddo-side citations are unchanged and the
+owner's decision (2026-11-02) is to make the tracked ODD feature document the single requirement
+authority.

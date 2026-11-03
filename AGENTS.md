@@ -17,6 +17,7 @@ Gradual_Knowledge_Discovery/        ← git root
 ├── docs/
 │   ├── product/                    ← what the product is and does today (team-facing)
 │   ├── proposals/                  ← unapproved drafts: thesis, slice proposals
+│   ├── research/                   ← cited findings that support a proposal or a decision
 │   ├── decisions/                  ← ADRs, numbered (technical, English)
 │   ├── guides/                     ← how to use / operate (when there is something to use)
 │   └── reference/                  ← commands, formats, contracts (when they exist)
@@ -67,6 +68,7 @@ Empty directories are documented here before they exist; nothing is scaffolded t
 | What must the product do? | `openspec/changes/<change>/` | tracked, reviewed, archived |
 | What was asked/done this session, with evidence? | `odd/tasks/` | local journal, pointers only |
 | How do I explain this to a team? | `docs/` | projection; explains, never specifies |
+| What did we find out about an external system? | `docs/research/` | cited findings, `path:line`, never opinion |
 | Why is it built this way? | `docs/decisions/` | ADRs, one decision each |
 | How is this repo verified, licensed, contributed to? | `CONTRIBUTING.md`, `LICENSE`, `SECURITY.md`, CI | tracked standard, from day one |
 | What does Kaddo actually do? | `references/kaddo` + `references/manifest.yml` | read-only clone, TTL, cited findings |

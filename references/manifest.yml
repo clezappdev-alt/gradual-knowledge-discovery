@@ -1,0 +1,25 @@
+# Consultation clones registry. Versioned; clone contents are not.
+# Required fields per entry: id, path, origin.url, purpose, owner, added_on,
+# ttl, update_policy, removal_criteria, status, shallow.
+
+clones:
+  - id: kaddo
+    path: references/kaddo
+    origin:
+      url: https://github.com/Kaddo-kdd/kaddo
+      ref: main
+      version: 3.132.0
+    purpose: >-
+      Deep audit of upstream Kaddo before any GKD scope decision: what it really offers, which
+      problem each command solves, and how each capability maps onto gentle-ai's mechanics (ODD,
+      openspec, RDD, skills, subagents, Engram). Reference and study only - never a base, never a fork,
+      never a compatibility promise.
+    owner: clezapp
+    added_on: 2026-10-27
+    ttl:
+      persistent: true
+      review: 2027-01-27
+    update_policy: re-clone at the tag referenced by the audit when a newer release changes the answer
+    removal_criteria: the audit is closed and no open decision cites the clone
+    status: active
+    shallow: true
